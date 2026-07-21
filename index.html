@@ -371,6 +371,44 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
+
+    /* Copy and paste page additions */
+    .header-nav {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .header-nav a {
+      font-size: .88rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--ink);
+      padding: .35rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color .2s, color .2s;
+    }
+    .header-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .context-link {
+      text-align: center;
+      margin: 2rem 0 0;
+      padding: 1rem 1.25rem;
+      background: var(--accent-soft);
+      border-radius: 12px;
+      font-size: .95rem;
+    }
+    .context-link a {
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+    .context-link a:hover { text-decoration: underline; }
+    @media (max-width: 680px) {
+      .header-nav { flex-wrap: nowrap; gap: .8rem; }
+      .header-nav a { font-size: .82rem; white-space: nowrap; }
+    }
+    /* End copy and paste page additions */
   </style>
 </head>
 <body>
@@ -379,6 +417,10 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="/" aria-label="Cursive Font Generator home"><span class="brand-mark">Cursive</span> Font Generator</a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/copy-and-paste/">Copy & Paste</a>
+      </nav>
       <p class="header-note">Beautiful Unicode text, ready to copy and paste.</p>
     </div>
   </header>
@@ -618,6 +660,12 @@
         <li><h3>Copy and paste</h3><p>Choose Copy, then paste the Unicode text into social media, games, chats, or documents.</p></li>
       </ol>
     </section>
+
+    <p class="context-link">
+      📋 Need copy-and-paste cursive text? Try our dedicated 
+      <a href="/copy-and-paste/">Cursive Text Copy and Paste</a> tool — 
+      one click to copy any style.
+    </p>
 
     <section class="content-section container" aria-labelledby="faq-title">
       <div class="section-heading">
