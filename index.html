@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursive Font Generator - Free Online Cursive Text Copy & Paste</title>
+  <meta name="description" content="Generate beautiful cursive text instantly with Unicode. Free online cursive font generator with copy & paste support. Try 30+ styles — elegant, fancy, bold, aesthetic. No sign-up needed.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#6d5ce7">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cursive Font Generator - Free Online Cursive Text Copy & Paste">
+  <meta property="og:description" content="Create cursive, bold, fancy, and aesthetic Unicode text in 38 styles. Copy and paste anywhere for free.">
+  <style>
+    :root {
+      --accent: #6554d9;
+      --accent-dark: #5140c5;
+      --accent-soft: #f0edff;
+      --ink: #20202a;
+      --muted: #686879;
+      --line: #e8e7ef;
+      --surface: #ffffff;
+      --page: #f8f8fb;
+      --success: #18794e;
+      --danger: #b42318;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(35, 31, 78, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    [hidden] { display: none !important; }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 100;
+      padding: .7rem 1rem;
+      color: #fff;
+      background: var(--accent-dark);
+      border-radius: 0 0 8px 8px;
+    }
+    .skip-link:focus { top: 0; }
+
+    .site-header {
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner,
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+    .header-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+    .brand-mark { color: var(--accent); }
+    .header-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    main { padding-bottom: 4rem; }
+    .hero {
+      padding: clamp(3.4rem, 8vw, 6.2rem) 0 2.8rem;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 5%, rgba(115, 91, 240, .12), transparent 34rem),
+        var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin: 0 0 .9rem;
+      padding: .35rem .75rem;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 780px;
+      margin: 0 auto .85rem;
+      font-size: clamp(2.15rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+    .hero-copy {
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+    .generator-panel {
+      max-width: 900px;
+      margin-inline: auto;
+    }
+    .input-label {
+      display: block;
+      margin-bottom: .55rem;
+      color: #424253;
+      font-size: .88rem;
+      font-weight: 700;
+      text-align: left;
+    }
+    #text-input {
+      width: 100%;
+      min-height: 74px;
+      padding: 1rem 1.25rem;
+      color: var(--ink);
+      background: #fff;
+      border: 2px solid #d8d5e8;
+      border-radius: 18px;
+      outline: none;
+      box-shadow: 0 12px 35px rgba(50, 43, 112, .08);
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      text-align: center;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    #text-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(101, 84, 217, .12), 0 12px 35px rgba(50, 43, 112, .1);
+    }
+    #text-input::placeholder { color: #9a98a8; }
+    .input-help {
+      margin: .65rem 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .styles-section { padding-top: 2rem; }
+    .filter-row {
+      display: flex;
+      gap: .55rem;
+      overflow-x: auto;
+      padding: .2rem .1rem .7rem;
+      scrollbar-width: thin;
+    }
+    .filter-btn {
+      flex: 0 0 auto;
+      padding: .58rem .95rem;
+      color: #555466;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: .88rem;
+      font-weight: 700;
+      transition: color .18s, background .18s, border-color .18s, transform .18s;
+    }
+    .filter-btn:hover { border-color: #b9b3e9; transform: translateY(-1px); }
+    .filter-btn[aria-pressed="true"] {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .results-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: .5rem 0 1rem;
+    }
+    .results-bar h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
+      letter-spacing: -.025em;
+    }
+    #result-count { margin: 0; color: var(--muted); font-size: .86rem; }
+
+    .font-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .font-card {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 3px 14px rgba(35, 31, 78, .035);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .font-card:hover {
+      border-color: #cec9ee;
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .card-heading {
+      min-height: 46px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .5rem;
+    }
+    .card-heading h3 {
+      margin: 0;
+      font-size: .88rem;
+      line-height: 1.35;
+    }
+    .style-tag {
+      flex: 0 0 auto;
+      padding: .16rem .44rem;
+      color: #706d7e;
+      background: #f4f3f7;
+      border-radius: 999px;
+      font-size: .64rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .preview {
+      min-height: 88px;
+      max-height: 145px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      margin: .65rem 0 .9rem;
+      color: #2e2b48;
+      font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+      line-height: 1.55;
+      text-align: center;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      width: 100%;
+      min-height: 42px;
+      margin-top: auto;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: .86rem;
+      font-weight: 800;
+      transition: color .18s, background .18s, transform .18s;
+    }
+    .copy-btn:hover { color: #fff; background: var(--accent); }
+    .copy-btn:active { transform: scale(.98); }
+    .copy-btn.copied { color: #fff; background: var(--success); }
+    .copy-btn.copy-failed { color: #fff; background: var(--danger); }
+    :focus-visible { outline: 3px solid rgba(101, 84, 217, .35); outline-offset: 3px; }
+
+    .content-section { padding-top: 4rem; }
+    .section-heading { max-width: 690px; margin: 0 auto 1.8rem; text-align: center; }
+    .section-heading h2 {
+      margin: 0 0 .55rem;
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: steps;
+    }
+    .steps li {
+      position: relative;
+      padding: 1.45rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      counter-increment: steps;
+    }
+    .steps li::before {
+      content: counter(steps);
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      margin-bottom: .9rem;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 10px;
+      font-weight: 800;
+    }
+    .steps h3 { margin: 0 0 .35rem; font-size: 1rem; }
+    .steps p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .faq-list { max-width: 880px; margin: 0 auto; display: grid; gap: .8rem; }
+    .faq-item {
+      padding: 1.25rem 1.35rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .faq-item h3 { margin: 0 0 .4rem; font-size: 1rem; }
+    .faq-item p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .site-footer {
+      padding: 2.1rem 0;
+      color: #747281;
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .footer-inner p { margin: 0; font-size: .86rem; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .footer-nav a { font-size: .86rem; font-weight: 700; text-decoration: none; }
+    .footer-nav a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+    @media (max-width: 1020px) {
+      .font-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .header-note { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 680px) {
+      .header-inner, .container { width: min(100% - 1rem, 1180px); }
+      .hero { padding-top: 3rem; }
+      #text-input { min-height: 66px; padding-inline: .8rem; }
+      .font-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+      .font-card { padding: .8rem; border-radius: 13px; }
+      .card-heading { min-height: 54px; display: block; }
+      .card-heading h3 { min-height: 2.4em; font-size: .79rem; }
+      .style-tag { display: inline-block; margin-top: .25rem; }
+      .preview { min-height: 80px; margin-block: .45rem .7rem; font-size: 1.02rem; }
+      .copy-btn { min-height: 40px; }
+      .results-bar { align-items: flex-end; }
+      .content-section { padding-top: 3.2rem; }
+    }
+    @media (max-width: 380px) {
+      .font-grid { gap: .5rem; }
+      .font-card { padding: .68rem; }
+      .preview { font-size: .94rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#generator">Skip to generator</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Cursive Font Generator home"><span class="brand-mark">Cursive</span> Font Generator</a>
+      <p class="header-note">Beautiful Unicode text, ready to copy and paste.</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="generator" aria-labelledby="page-title">
+      <div class="container">
+        <p class="eyebrow">38 free Unicode styles</p>
+        <h1 id="page-title">Free Cursive Font Generator</h1>
+        <p class="hero-copy">Turn ordinary words into cursive, bold, fancy, and aesthetic Unicode text. Type once, explore every style instantly, and copy your favorite anywhere.</p>
+        <div class="generator-panel">
+          <label class="input-label" for="text-input">Enter your text</label>
+          <input id="text-input" type="text" value="Cursive Fonts 123" maxlength="240" autocomplete="off" spellcheck="false" aria-describedby="input-help">
+          <p class="input-help" id="input-help">Letters, numbers, punctuation, and emoji are supported. Nothing you type leaves this page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="styles-section container" aria-labelledby="styles-title">
+      <nav class="filter-row" aria-label="Font style categories">
+        <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" type="button" data-filter="cursive" aria-pressed="false">Cursive</button>
+        <button class="filter-btn" type="button" data-filter="bold" aria-pressed="false">Bold</button>
+        <button class="filter-btn" type="button" data-filter="fancy" aria-pressed="false">Fancy</button>
+        <button class="filter-btn" type="button" data-filter="aesthetic" aria-pressed="false">Aesthetic</button>
+        <button class="filter-btn" type="button" data-filter="cool" aria-pressed="false">Cool</button>
+        <button class="filter-btn" type="button" data-filter="decorative" aria-pressed="false">Decorative</button>
+      </nav>
+
+      <div class="results-bar">
+        <h2 id="styles-title">Choose a font style</h2>
+        <p id="result-count" aria-live="polite">38 styles shown</p>
+      </div>
+
+      <div class="font-grid">
+        <article class="font-card" data-style="bold" data-categories="bold cool">
+          <div class="card-heading"><h3>Bold</h3><span class="style-tag">Bold</span></div>
+          <p class="preview" aria-live="polite">𝗖𝘂𝗿𝘀𝗶𝘃𝗲 𝗙𝗼𝗻𝘁𝘀 𝟭𝟮𝟯</p>
+          <button class="copy-btn" type="button" aria-label="Copy Bold text">Copy</button>
+        </article>
+        <article class="font-card" data-style="italic" data-categories="cursive aesthetic">
+          <div class="card-heading"><h3>Italic</h3><span class="style-tag">Cursive</span></div>
+          <p class="preview" aria-live="polite">𝐶𝑢𝑟𝑠𝑖𝑣𝑒 𝐹𝑜𝑛𝑡𝑠 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Italic text">Copy</button>
+        </article>
+        <article class="font-card" data-style="bold-italic" data-categories="cursive bold fancy">
+          <div class="card-heading"><h3>Bold Italic</h3><span class="style-tag">Bold</span></div>
+          <p class="preview" aria-live="polite">𝑪𝒖𝒓𝒔𝒊𝒗𝒆 𝑭𝒐𝒏𝒕𝒔 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Bold Italic text">Copy</button>
+        </article>
+        <article class="font-card" data-style="script" data-categories="cursive fancy aesthetic">
+          <div class="card-heading"><h3>Script Cursive</h3><span class="style-tag">Cursive</span></div>
+          <p class="preview" aria-live="polite">𝒞𝓊𝓇𝓈𝒾𝓋ℯ ℱℴ𝓃𝓉𝓈 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Script Cursive text">Copy</button>
+        </article>
+        <article class="font-card" data-style="bold-script" data-categories="cursive bold fancy">
+          <div class="card-heading"><h3>Bold Script Cursive</h3><span class="style-tag">Cursive</span></div>
+          <p class="preview" aria-live="polite">𝓒𝓾𝓻𝓼𝓲𝓿𝓮 𝓕𝓸𝓷𝓽𝓼 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Bold Script Cursive text">Copy</button>
+        </article>
+        <article class="font-card" data-style="fraktur" data-categories="fancy cool">
+          <div class="card-heading"><h3>Fraktur</h3><span class="style-tag">Fancy</span></div>
+          <p class="preview" aria-live="polite">ℭ𝔲𝔯𝔰𝔦𝔳𝔢 𝔉𝔬𝔫𝔱𝔰 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Fraktur text">Copy</button>
+        </article>
+        <article class="font-card" data-style="bold-fraktur" data-categories="bold fancy cool">
+          <div class="card-heading"><h3>Bold Fraktur</h3><span class="style-tag">Bold</span></div>
+          <p class="preview" aria-live="polite">𝕮𝖚𝖗𝖘𝖎𝖛𝖊 𝕱𝖔𝖓𝖙𝖘 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Bold Fraktur text">Copy</button>
+        </article>
+        <article class="font-card" data-style="double-struck" data-categories="fancy cool">
+          <div class="card-heading"><h3>Double-Struck</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">ℂ𝕦𝕣𝕤𝕚𝕧𝕖 𝔽𝕠𝕟𝕥𝕤 𝟙𝟚𝟛</p>
+          <button class="copy-btn" type="button" aria-label="Copy Double-Struck text">Copy</button>
+        </article>
+        <article class="font-card" data-style="sans-serif" data-categories="aesthetic cool">
+          <div class="card-heading"><h3>Sans Serif</h3><span class="style-tag">Clean</span></div>
+          <p class="preview" aria-live="polite">𝖢𝗎𝗋𝗌𝗂𝗏𝖾 𝖥𝗈𝗇𝗍𝗌 𝟣𝟤𝟥</p>
+          <button class="copy-btn" type="button" aria-label="Copy Sans Serif text">Copy</button>
+        </article>
+        <article class="font-card" data-style="sans-bold" data-categories="bold cool">
+          <div class="card-heading"><h3>Sans Serif Bold</h3><span class="style-tag">Bold</span></div>
+          <p class="preview" aria-live="polite">𝗖𝘂𝗿𝘀𝗶𝘃𝗲 𝗙𝗼𝗻𝘁𝘀 𝟭𝟮𝟯</p>
+          <button class="copy-btn" type="button" aria-label="Copy Sans Serif Bold text">Copy</button>
+        </article>
+        <article class="font-card" data-style="sans-italic" data-categories="cursive aesthetic cool">
+          <div class="card-heading"><h3>Sans Serif Italic</h3><span class="style-tag">Cursive</span></div>
+          <p class="preview" aria-live="polite">𝘊𝘶𝘳𝘴𝘪𝘷𝘦 𝘍𝘰𝘯𝘵𝘴 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Sans Serif Italic text">Copy</button>
+        </article>
+        <article class="font-card" data-style="sans-bold-italic" data-categories="bold fancy cool">
+          <div class="card-heading"><h3>Sans Serif Bold Italic</h3><span class="style-tag">Bold</span></div>
+          <p class="preview" aria-live="polite">𝘾𝙪𝙧𝙨𝙞𝙫𝙚 𝙁𝙤𝙣𝙩𝙨 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Sans Serif Bold Italic text">Copy</button>
+        </article>
+        <article class="font-card" data-style="monospace" data-categories="aesthetic cool">
+          <div class="card-heading"><h3>Monospace</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">𝙲𝚞𝚛𝚜𝚒𝚟𝚎 𝙵𝚘𝚗𝚝𝚜 𝟷𝟸𝟹</p>
+          <button class="copy-btn" type="button" aria-label="Copy Monospace text">Copy</button>
+        </article>
+        <article class="font-card" data-style="small-caps" data-categories="aesthetic cool">
+          <div class="card-heading"><h3>Small Caps</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">ᴄᴜʀꜱɪᴠᴇ ꜰᴏɴᴛꜱ 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Small Caps text">Copy</button>
+        </article>
+        <article class="font-card" data-style="fullwidth" data-categories="aesthetic cool">
+          <div class="card-heading"><h3>Fullwidth</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">Ｃｕｒｓｉｖｅ Ｆｏｎｔｓ １２３</p>
+          <button class="copy-btn" type="button" aria-label="Copy Fullwidth text">Copy</button>
+        </article>
+        <article class="font-card" data-style="circled" data-categories="fancy decorative">
+          <div class="card-heading"><h3>Circled</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">Ⓒⓤⓡⓢⓘⓥⓔ Ⓕⓞⓝⓣⓢ ①②③</p>
+          <button class="copy-btn" type="button" aria-label="Copy Circled text">Copy</button>
+        </article>
+        <article class="font-card" data-style="negative-circled" data-categories="bold fancy decorative">
+          <div class="card-heading"><h3>Negative Circled</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">🅒🅤🅡🅢🅘🅥🅔 🅕🅞🅝🅣🅢 ❶❷❸</p>
+          <button class="copy-btn" type="button" aria-label="Copy Negative Circled text">Copy</button>
+        </article>
+        <article class="font-card" data-style="parenthesized" data-categories="fancy decorative">
+          <div class="card-heading"><h3>Parenthesized</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">⒞⒰⒭⒮⒤⒱⒠ ⒡⒪⒩⒯⒮ ⑴⑵⑶</p>
+          <button class="copy-btn" type="button" aria-label="Copy Parenthesized text">Copy</button>
+        </article>
+        <article class="font-card" data-style="squared" data-categories="cool decorative">
+          <div class="card-heading"><h3>Square</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">🄲🅄🅁🅂🄸🅅🄴 🄵🄾🄽🅃🅂 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Square text">Copy</button>
+        </article>
+        <article class="font-card" data-style="negative-squared" data-categories="bold cool decorative">
+          <div class="card-heading"><h3>Negative Squared</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">🅲🆄🆁🆂🅸🆅🅴 🅵🅾🅽🆃🆂 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Negative Squared text">Copy</button>
+        </article>
+        <article class="font-card" data-style="bubble" data-categories="fancy decorative">
+          <div class="card-heading"><h3>Bubble</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">◯C◯u◯r◯s◯i◯v◯e ◯F◯o◯n◯t◯s ◯1◯2◯3</p>
+          <button class="copy-btn" type="button" aria-label="Copy Bubble text">Copy</button>
+        </article>
+        <article class="font-card" data-style="double-bubble" data-categories="fancy decorative">
+          <div class="card-heading"><h3>Double Bubble</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">◎C◎u◎r◎s◎i◎v◎e ◎F◎o◎n◎t◎s ◎1◎2◎3</p>
+          <button class="copy-btn" type="button" aria-label="Copy Double Bubble text">Copy</button>
+        </article>
+        <article class="font-card" data-style="superscript" data-categories="aesthetic fancy">
+          <div class="card-heading"><h3>Superscript</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">ᶜᵘʳˢⁱᵛᵉ ᶠᵒⁿᵗˢ ¹²³</p>
+          <button class="copy-btn" type="button" aria-label="Copy Superscript text">Copy</button>
+        </article>
+        <article class="font-card" data-style="subscript" data-categories="aesthetic fancy">
+          <div class="card-heading"><h3>Subscript</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">Cᵤᵣₛᵢᵥₑ Fₒₙₜₛ ₁₂₃</p>
+          <button class="copy-btn" type="button" aria-label="Copy Subscript text">Copy</button>
+        </article>
+        <article class="font-card" data-style="upside-down" data-categories="cool fancy">
+          <div class="card-heading"><h3>Upside Down</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">ƐᄅƖ sʇuoℲ ǝʌᴉsɹnƆ</p>
+          <button class="copy-btn" type="button" aria-label="Copy Upside Down text">Copy</button>
+        </article>
+        <article class="font-card" data-style="mirrored" data-categories="cool fancy">
+          <div class="card-heading"><h3>Mirrored</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">Ɔnɿƨivɘ ꟻonƚƨ 123</p>
+          <button class="copy-btn" type="button" aria-label="Copy Mirrored text">Copy</button>
+        </article>
+        <article class="font-card" data-style="strikethrough" data-categories="decorative cool">
+          <div class="card-heading"><h3>Strikethrough</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">C̶u̶r̶s̶i̶v̶e̶ F̶o̶n̶t̶s̶ 1̶2̶3̶</p>
+          <button class="copy-btn" type="button" aria-label="Copy Strikethrough text">Copy</button>
+        </article>
+        <article class="font-card" data-style="underline" data-categories="decorative aesthetic">
+          <div class="card-heading"><h3>Underline</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">C̲u̲r̲s̲i̲v̲e̲ F̲o̲n̲t̲s̲ 1̲2̲3̲</p>
+          <button class="copy-btn" type="button" aria-label="Copy Underline text">Copy</button>
+        </article>
+        <article class="font-card" data-style="double-underline" data-categories="decorative fancy">
+          <div class="card-heading"><h3>Double Underline</h3><span class="style-tag">Decorative</span></div>
+          <p class="preview" aria-live="polite">C̳u̳r̳s̳i̳v̳e̳ F̳o̳n̳t̳s̳ 1̳2̳3̳</p>
+          <button class="copy-btn" type="button" aria-label="Copy Double Underline text">Copy</button>
+        </article>
+        <article class="font-card" data-style="slash-overlay" data-categories="decorative cool">
+          <div class="card-heading"><h3>Slash Overlay</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">C̸u̸r̸s̸i̸v̸e̸ F̸o̸n̸t̸s̸ 1̸2̸3̸</p>
+          <button class="copy-btn" type="button" aria-label="Copy Slash Overlay text">Copy</button>
+        </article>
+        <article class="font-card" data-style="dotted" data-categories="aesthetic decorative">
+          <div class="card-heading"><h3>Dotted</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">Ċu̇ṙṡi̇v̇ė Ḟȯṅṫṡ 1̇2̇3̇</p>
+          <button class="copy-btn" type="button" aria-label="Copy Dotted text">Copy</button>
+        </article>
+        <article class="font-card" data-style="wavy" data-categories="aesthetic decorative">
+          <div class="card-heading"><h3>Wavy</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">C̰ṵr̰s̰ḭv̰ḛ F̰o̰n̰t̰s̰ 1̰2̰3̰</p>
+          <button class="copy-btn" type="button" aria-label="Copy Wavy text">Copy</button>
+        </article>
+        <article class="font-card" data-style="spaced" data-categories="aesthetic cool">
+          <div class="card-heading"><h3>Spaced</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">C u r s i v e   F o n t s   1 2 3</p>
+          <button class="copy-btn" type="button" aria-label="Copy Spaced text">Copy</button>
+        </article>
+        <article class="font-card" data-style="aesthetic-dots" data-categories="aesthetic decorative">
+          <div class="card-heading"><h3>Aesthetic Dots</h3><span class="style-tag">Aesthetic</span></div>
+          <p class="preview" aria-live="polite">C · u · r · s · i · v · e · F · o · n · t · s · 1 · 2 · 3</p>
+          <button class="copy-btn" type="button" aria-label="Copy Aesthetic Dots text">Copy</button>
+        </article>
+        <article class="font-card" data-style="sparkle" data-categories="aesthetic fancy decorative">
+          <div class="card-heading"><h3>Sparkle</h3><span class="style-tag">Fancy</span></div>
+          <p class="preview" aria-live="polite">✦ Cursive Fonts 123 ✦</p>
+          <button class="copy-btn" type="button" aria-label="Copy Sparkle text">Copy</button>
+        </article>
+        <article class="font-card" data-style="bracketed" data-categories="cool decorative">
+          <div class="card-heading"><h3>Bracketed</h3><span class="style-tag">Cool</span></div>
+          <p class="preview" aria-live="polite">【Cursive Fonts 123】</p>
+          <button class="copy-btn" type="button" aria-label="Copy Bracketed text">Copy</button>
+        </article>
+        <article class="font-card" data-style="script-flourish" data-categories="cursive fancy decorative">
+          <div class="card-heading"><h3>Script Flourish</h3><span class="style-tag">Cursive</span></div>
+          <p class="preview" aria-live="polite">꧁ 𝒞𝓊𝓇𝓈𝒾𝓋ℯ ℱℴ𝓃𝓉𝓈 123 ꧂</p>
+          <button class="copy-btn" type="button" aria-label="Copy Script Flourish text">Copy</button>
+        </article>
+        <article class="font-card" data-style="handwritten-accent" data-categories="cursive aesthetic fancy">
+          <div class="card-heading"><h3>Handwritten Accent</h3><span class="style-tag">Cursive</span></div>
+          <p class="preview" aria-live="polite">𝐶́𝑢́𝑟́𝑠́𝑖́𝑣́𝑒́ 𝐹́𝑜́𝑛́𝑡́𝑠́ 1́2́3́</p>
+          <button class="copy-btn" type="button" aria-label="Copy Handwritten Accent text">Copy</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section container" aria-labelledby="how-title">
+      <div class="section-heading">
+        <h2 id="how-title">How to Use the Font Generator</h2>
+        <p>Create copy-ready Unicode text in three quick steps. No account, download, or font installation is required.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Type your text</h3><p>Enter a name, caption, bio, message, or any short phrase in the box above.</p></li>
+        <li><h3>Explore 38 styles</h3><p>Preview every result instantly or use the category buttons to narrow the grid.</p></li>
+        <li><h3>Copy and paste</h3><p>Choose Copy, then paste the Unicode text into social media, games, chats, or documents.</p></li>
+      </ol>
+    </section>
+
+    <section class="content-section container" aria-labelledby="faq-title">
+      <div class="section-heading">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
+        <p>Everything you need to know about creating and using cursive Unicode text.</p>
+      </div>
+      <div class="faq-list">
+        <article class="faq-item"><h3>What is a cursive font generator?</h3><p>A cursive font generator converts ordinary letters and numbers into similar-looking Unicode characters. The result is real text you can copy and paste, not an image or a downloaded font.</p></article>
+        <article class="faq-item"><h3>Where can I use the generated text?</h3><p>You can paste it into Instagram bios, TikTok captions, Discord names, WhatsApp messages, game profiles, documents, and most websites that support Unicode.</p></article>
+        <article class="faq-item"><h3>Is this cursive text generator free?</h3><p>Yes. All 38 styles are free to use, with no sign-up, payment, download, or usage limit.</p></article>
+        <article class="faq-item"><h3>Why do some letters or numbers stay unchanged?</h3><p>Some Unicode style sets do not contain a special version of every character. When no reliable equivalent exists, the generator keeps the original character so your text remains readable.</p></article>
+        <article class="faq-item"><h3>Does the generator store what I type?</h3><p>No. Every conversion happens locally in your browser. The page does not send your text to an API or external service.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Free Unicode text styles. No sign-up and no downloads.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/copy-and-paste">Copy and Paste</a>
+        <a href="/name-generator">Name Generator</a>
+        <a href="/free">Free Tools</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a cursive font generator?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A cursive font generator converts ordinary letters and numbers into similar-looking Unicode characters. The result is real text you can copy and paste, not an image or a downloaded font." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I use the generated text?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can paste it into Instagram bios, TikTok captions, Discord names, WhatsApp messages, game profiles, documents, and most websites that support Unicode." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this cursive text generator free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All 38 styles are free to use, with no sign-up, payment, download, or usage limit." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do some letters or numbers stay unchanged?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Some Unicode style sets do not contain a special version of every character. When no reliable equivalent exists, the generator keeps the original character so your text remains readable." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the generator store what I type?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Every conversion happens locally in your browser. The page does not send your text to an API or external service." }
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const SOURCE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const DIGITS = '0123456789';
+      const SAMPLE_TEXT = 'Cursive Fonts 123';
+
+      const codePointRange = (start, length) => Array.from({ length }, (_, index) => String.fromCodePoint(start + index)).join('');
+      const continuousAlphabet = (upperStart, lowerStart, digitStart = null) =>
+        codePointRange(upperStart, 26) + codePointRange(lowerStart, 26) + (digitStart === null ? DIGITS : codePointRange(digitStart, 10));
+
+      const TARGET_ALPHABETS = Object.freeze({
+        bold: continuousAlphabet(0x1D5D4, 0x1D5EE, 0x1D7EC),
+        italic: '𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧0123456789',
+        boldItalic: continuousAlphabet(0x1D468, 0x1D482),
+        script: '𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏0123456789',
+        boldScript: continuousAlphabet(0x1D4D0, 0x1D4EA),
+        fraktur: '𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷0123456789',
+        boldFraktur: continuousAlphabet(0x1D56C, 0x1D586),
+        doubleStruck: '𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡',
+        sansSerif: continuousAlphabet(0x1D5A0, 0x1D5BA, 0x1D7E2),
+        sansBold: continuousAlphabet(0x1D5D4, 0x1D5EE, 0x1D7EC),
+        sansItalic: continuousAlphabet(0x1D608, 0x1D622),
+        sansBoldItalic: continuousAlphabet(0x1D63C, 0x1D656),
+        monospace: continuousAlphabet(0x1D670, 0x1D68A, 0x1D7F6),
+        fullwidth: continuousAlphabet(0xFF21, 0xFF41, 0xFF10),
+        circled: codePointRange(0x24B6, 26) + codePointRange(0x24D0, 26) + '⓪①②③④⑤⑥⑦⑧⑨',
+        negativeCircled: codePointRange(0x1F150, 26) + codePointRange(0x1F150, 26) + '⓿❶❷❸❹❺❻❼❽❾',
+        parenthesized: codePointRange(0x249C, 26) + codePointRange(0x249C, 26) + '0⑴⑵⑶⑷⑸⑹⑺⑻⑼',
+        squared: codePointRange(0x1F130, 26) + codePointRange(0x1F130, 26) + DIGITS,
+        negativeSquared: codePointRange(0x1F170, 26) + codePointRange(0x1F170, 26) + DIGITS
+      });
+
+      function alphabetMap(target) {
+        const targetCharacters = Array.from(target);
+        if (targetCharacters.length !== SOURCE.length) throw new Error(`Invalid alphabet map: expected ${SOURCE.length}, received ${targetCharacters.length}`);
+        return new Map(Array.from(SOURCE, (character, index) => [character, targetCharacters[index]]));
+      }
+
+      function looseMap(pairs) {
+        return new Map(Object.entries(pairs));
+      }
+
+      function mapText(text, map) {
+        return Array.from(text, character => map.get(character) ?? character).join('');
+      }
+
+      function addCombiningMark(mark) {
+        return text => Array.from(text, character => /\s/u.test(character) ? character : `${character}${mark}`).join('');
+      }
+
+      function prefixEach(symbol) {
+        return text => Array.from(text, character => /\s/u.test(character) ? character : `${symbol}${character}`).join('');
+      }
+
+      const ALPHABET_MAPS = Object.fromEntries(Object.entries(TARGET_ALPHABETS).map(([name, target]) => [name, alphabetMap(target)]));
+      const SMALL_CAPS = alphabetMap('ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ0123456789');
+      const SUPERSCRIPT = looseMap({
+        A:'ᴬ', B:'ᴮ', C:'ᶜ', D:'ᴰ', E:'ᴱ', F:'ᶠ', G:'ᴳ', H:'ᴴ', I:'ᴵ', J:'ᴶ', K:'ᴷ', L:'ᴸ', M:'ᴹ', N:'ᴺ', O:'ᴼ', P:'ᴾ', R:'ᴿ', S:'ˢ', T:'ᵀ', U:'ᵁ', V:'ⱽ', W:'ᵂ',
+        a:'ᵃ', b:'ᵇ', c:'ᶜ', d:'ᵈ', e:'ᵉ', f:'ᶠ', g:'ᵍ', h:'ʰ', i:'ⁱ', j:'ʲ', k:'ᵏ', l:'ˡ', m:'ᵐ', n:'ⁿ', o:'ᵒ', p:'ᵖ', r:'ʳ', s:'ˢ', t:'ᵗ', u:'ᵘ', v:'ᵛ', w:'ʷ', x:'ˣ', y:'ʸ', z:'ᶻ',
+        0:'⁰', 1:'¹', 2:'²', 3:'³', 4:'⁴', 5:'⁵', 6:'⁶', 7:'⁷', 8:'⁸', 9:'⁹'
+      });
+      const SUBSCRIPT = looseMap({
+        a:'ₐ', e:'ₑ', h:'ₕ', i:'ᵢ', j:'ⱼ', k:'ₖ', l:'ₗ', m:'ₘ', n:'ₙ', o:'ₒ', p:'ₚ', r:'ᵣ', s:'ₛ', t:'ₜ', u:'ᵤ', v:'ᵥ', x:'ₓ',
+        0:'₀', 1:'₁', 2:'₂', 3:'₃', 4:'₄', 5:'₅', 6:'₆', 7:'₇', 8:'₈', 9:'₉'
+      });
+      const UPSIDE_DOWN = looseMap({
+        A:'∀', B:'𐐒', C:'Ɔ', D:'◖', E:'Ǝ', F:'Ⅎ', G:'⅁', H:'H', I:'I', J:'ſ', K:'⋊', L:'˥', M:'W', N:'N', O:'O', P:'Ԁ', Q:'Ò', R:'ᴚ', S:'S', T:'⊥', U:'∩', V:'Λ', W:'M', X:'X', Y:'⅄', Z:'Z',
+        a:'ɐ', b:'q', c:'ɔ', d:'p', e:'ǝ', f:'ɟ', g:'ƃ', h:'ɥ', i:'ᴉ', j:'ɾ', k:'ʞ', l:'l', m:'ɯ', n:'u', o:'o', p:'d', q:'b', r:'ɹ', s:'s', t:'ʇ', u:'n', v:'ʌ', w:'ʍ', x:'x', y:'ʎ', z:'z',
+        0:'0', 1:'Ɩ', 2:'ᄅ', 3:'Ɛ', 4:'ㄣ', 5:'ϛ', 6:'9', 7:'ㄥ', 8:'8', 9:'6', '!':'¡', '?':'¿', '.':'˙', ',':"'"
+      });
+      const MIRRORED = looseMap({
+        A:'A', B:'ᙠ', C:'Ɔ', D:'ᗡ', E:'Ǝ', F:'ꟻ', G:'Ꭾ', J:'Ⴑ', K:'⋊', L:'⅃', N:'И', P:'Ԁ', Q:'Ϙ', R:'Я', S:'Ƨ', Z:'Ƹ',
+        a:'ɒ', b:'d', c:'ɔ', d:'b', e:'ɘ', f:'ꟻ', g:'ǫ', h:'ʜ', i:'i', j:'ꞁ', k:'ʞ', l:'l', n:'ᴎ', p:'q', q:'p', r:'ɿ', s:'ƨ', t:'ƚ', y:'γ'
+      });
+
+      const STYLE_TRANSFORMS = Object.freeze({
+        'bold': text => mapText(text, ALPHABET_MAPS.bold),
+        'italic': text => mapText(text, ALPHABET_MAPS.italic),
+        'bold-italic': text => mapText(text, ALPHABET_MAPS.boldItalic),
+        'script': text => mapText(text, ALPHABET_MAPS.script),
+        'bold-script': text => mapText(text, ALPHABET_MAPS.boldScript),
+        'fraktur': text => mapText(text, ALPHABET_MAPS.fraktur),
+        'bold-fraktur': text => mapText(text, ALPHABET_MAPS.boldFraktur),
+        'double-struck': text => mapText(text, ALPHABET_MAPS.doubleStruck),
+        'sans-serif': text => mapText(text, ALPHABET_MAPS.sansSerif),
+        'sans-bold': text => mapText(text, ALPHABET_MAPS.sansBold),
+        'sans-italic': text => mapText(text, ALPHABET_MAPS.sansItalic),
+        'sans-bold-italic': text => mapText(text, ALPHABET_MAPS.sansBoldItalic),
+        'monospace': text => mapText(text, ALPHABET_MAPS.monospace),
+        'small-caps': text => mapText(text, SMALL_CAPS),
+        'fullwidth': text => mapText(text, ALPHABET_MAPS.fullwidth),
+        'circled': text => mapText(text, ALPHABET_MAPS.circled),
+        'negative-circled': text => mapText(text, ALPHABET_MAPS.negativeCircled),
+        'parenthesized': text => mapText(text, ALPHABET_MAPS.parenthesized),
+        'squared': text => mapText(text, ALPHABET_MAPS.squared),
+        'negative-squared': text => mapText(text, ALPHABET_MAPS.negativeSquared),
+        'bubble': prefixEach('◯'),
+        'double-bubble': prefixEach('◎'),
+        'superscript': text => mapText(text, SUPERSCRIPT),
+        'subscript': text => mapText(text, SUBSCRIPT),
+        'upside-down': text => Array.from(mapText(text, UPSIDE_DOWN)).reverse().join(''),
+        'mirrored': text => mapText(text, MIRRORED),
+        'strikethrough': addCombiningMark('\u0336'),
+        'underline': addCombiningMark('\u0332'),
+        'double-underline': addCombiningMark('\u0333'),
+        'slash-overlay': addCombiningMark('\u0338'),
+        'dotted': addCombiningMark('\u0307'),
+        'wavy': addCombiningMark('\u0330'),
+        'spaced': text => Array.from(text).join(' '),
+        'aesthetic-dots': text => Array.from(text).filter(character => !/\s/u.test(character)).join(' · '),
+        'sparkle': text => `✦ ${text} ✦`,
+        'bracketed': text => `【${text}】`,
+        'script-flourish': text => `꧁ ${mapText(text, ALPHABET_MAPS.script)} ꧂`,
+        'handwritten-accent': text => addCombiningMark('\u0301')(mapText(text, ALPHABET_MAPS.italic))
+      });
+
+      const input = document.getElementById('text-input');
+      const cards = Array.from(document.querySelectorAll('.font-card'));
+      const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+      const resultCount = document.getElementById('result-count');
+
+      cards.forEach(card => {
+        if (!STYLE_TRANSFORMS[card.dataset.style]) throw new Error(`Missing transform for ${card.dataset.style}`);
+      });
+
+      function updatePreviews(rawText) {
+        const text = rawText || SAMPLE_TEXT;
+        cards.forEach(card => {
+          card.querySelector('.preview').textContent = STYLE_TRANSFORMS[card.dataset.style](text);
+        });
+      }
+
+      function applyFilter(filter) {
+        let visible = 0;
+        cards.forEach(card => {
+          const matches = filter === 'all' || card.dataset.categories.split(/\s+/).includes(filter);
+          card.hidden = !matches;
+          if (matches) visible += 1;
+        });
+        filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
+        resultCount.textContent = `${visible} ${visible === 1 ? 'style' : 'styles'} shown`;
+      }
+
+      async function writeToClipboard(text) {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (error) {
+            // The local-file and older-browser fallback below handles rejected permissions.
+          }
+        }
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        textarea.style.pointerEvents = 'none';
+        document.body.appendChild(textarea);
+        textarea.select();
+        textarea.setSelectionRange(0, textarea.value.length);
+        let copied = false;
+        try { copied = document.execCommand('copy'); } catch (error) { copied = false; }
+        textarea.remove();
+        return copied;
+      }
+
+      function showCopyState(button, succeeded) {
+        button.textContent = succeeded ? '✅ Copied!' : 'Copy failed';
+        button.classList.toggle('copied', succeeded);
+        button.classList.toggle('copy-failed', !succeeded);
+        window.setTimeout(() => {
+          button.textContent = 'Copy';
+          button.classList.remove('copied', 'copy-failed');
+        }, 1500);
+      }
+
+      input.addEventListener('input', event => updatePreviews(event.target.value));
+      filterButtons.forEach(button => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
+      cards.forEach(card => {
+        card.querySelector('.copy-btn').addEventListener('click', async event => {
+          const text = card.querySelector('.preview').textContent;
+          showCopyState(event.currentTarget, await writeToClipboard(text));
+        });
+      });
+
+      updatePreviews(input.value);
+      applyFilter('all');
+    })();
+  </script>
+</body>
+</html>
