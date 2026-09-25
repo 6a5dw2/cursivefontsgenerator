@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cursive Text Generator Copy and Paste</title>
-  <meta name="description" content="Type your text and instantly get cursive fonts to copy and paste. Multiple cursive styles, one-click copy. Free, no sign-up.">
+  <title>Cursive Name Generator — Write Any Name in Cursive</title>
+  <meta name="description" content="Type your name and see it in beautiful cursive styles instantly. Copy and paste your cursive name for Instagram, bios, cards, tattoos and more. Free, no signup.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#4F46E5">
-  <link rel="canonical" href="https://cursivefontsgenerator.com/copy-and-paste/">
+  <link rel="canonical" href="https://cursivefontsgenerator.com/cursive-name-generator/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cursivefontsgenerator.com/copy-and-paste/">
-  <meta property="og:title" content="Cursive Text Generator Copy and Paste - Free Cursive Fonts to Copy">
-  <meta property="og:description" content="Type your text and instantly get seven cursive Unicode styles ready to copy and paste.">
+  <meta property="og:url" content="https://cursivefontsgenerator.com/cursive-name-generator/">
+  <meta property="og:title" content="Cursive Name Generator — Write Any Name in Cursive">
+  <meta property="og:description" content="Type your name and see it in beautiful cursive styles instantly. Copy and paste your cursive name for Instagram, bios, cards, tattoos and more. Free, no signup.">
   <style>
     :root {
       --accent: #4F46E5;
@@ -237,8 +237,18 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
+
     .header-inner { flex-wrap: wrap; padding-block: .7rem; }
-    .header-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .header-nav { flex-wrap: wrap; }
+    .header-note { display: none; }
+    .reading-note, .steps { max-width: 850px; margin: 0 auto 1.2rem; color: var(--muted); }
+    .reading-note a, .copy-block a { color: var(--accent-dark); }
+    .steps li { margin-bottom: .65rem; }
+    .style-sample { display: block; margin-block: .4rem; color: #302B57; font-size: 1.4rem; overflow-wrap: anywhere; }
+    .names-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .65rem; }
+    .name-example { min-width: 0; padding: .85rem; border: 1px solid var(--line); border-radius: 12px; background: white; }
+    .name-example > span:first-child { font-size: .8rem; color: var(--muted); }
+    #copy-status:empty { display: none; }
     @media(max-width: 680px) { .header-inner { justify-content: center; } .header-nav { justify-content: center; } }
   </style>
 </head>
@@ -250,8 +260,8 @@
       <a class="brand" href="/" aria-label="Cursive Font Generator home"><span class="brand-mark">Cursive</span> Font Generator</a>
       <nav class="header-nav" aria-label="Main navigation">
         <a href="/">Home</a>
-        <a href="/copy-and-paste/" aria-current="page">Copy &amp; Paste</a>
-        <a href="/cursive-name-generator/">Name Generator</a>
+        <a href="/copy-and-paste/">Copy &amp; Paste</a>
+        <a href="/cursive-name-generator/" aria-current="page">Name Generator</a>
       </nav>
       <p class="header-note">Real Unicode text, ready to paste anywhere.</p>
     </div>
@@ -262,112 +272,68 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <ol>
           <li><a href="/">Home</a></li>
-          <li aria-current="page">Copy and Paste</li>
+          <li aria-current="page">Name Generator</li>
         </ol>
       </nav>
 
       <section class="tool-section" id="generator" aria-labelledby="page-title">
         <div class="tool-heading">
-          <h1 id="page-title">Cursive Text Generator (Copy and Paste)</h1>
-          <p class="hero-copy">Type once and get seven clean cursive Unicode styles that are ready to copy for profiles, captions, messages, and more.</p>
+          <h1 id="page-title">Cursive Name Generator</h1>
+          <p class="hero-copy">Write your name in seven cursive and decorative styles. Choose your favorite and copy it in one click.</p>
         </div>
 
         <div class="tool-card">
-          <label class="input-label" for="text-input">Enter your text</label>
+          <label class="input-label" for="text-input">Type your name</label>
           <div class="input-row">
-            <input id="text-input" type="text" placeholder="Type your text here..." maxlength="240" autocomplete="off" spellcheck="false">
+            <input id="text-input" type="text" placeholder="Emma" maxlength="120" aria-describedby="name-help" autocomplete="off" spellcheck="false">
             <button class="action-btn" id="copy-all" type="button">Copy All</button>
           </div>
-          <p class="capability-line">Each style copies as real Unicode text — paste it anywhere: Instagram, TikTok, Twitter, WhatsApp, bio, captions.</p>
+          <p class="capability-line" id="name-help">Previewing Emma until you type. Styles convert A–Z and a–z; other characters stay unchanged. Display varies by app and device.</p>
+          <p class="capability-line" id="copy-status" role="status" aria-live="polite"></p>
           <noscript><p>JavaScript is off. The examples below still work: select and copy any Unicode result manually.</p></noscript>
 
-          <div class="results" aria-label="Cursive text results">
+          <div class="results" aria-label="Cursive name results">
             <article class="result-row" data-style="script" data-row="1">
               <span class="result-label">Script Cursive</span>
-              <output class="result-preview" aria-live="polite">𝒞𝓊𝓇𝓈𝒾𝓋ℯ 𝒯ℯ𝓍𝓉 123</output>
+              <output class="result-preview">ℰ𝓂𝓂𝒶</output>
               <button class="copy-btn" type="button" aria-label="Copy Script Cursive text">Copy</button>
             </article>
             <article class="result-row" data-style="bold-script" data-row="2">
               <span class="result-label">Bold Script</span>
-              <output class="result-preview" aria-live="polite">𝓒𝓾𝓻𝓼𝓲𝓿𝓮 𝓣𝓮𝔁𝓽 123</output>
+              <output class="result-preview">𝓔𝓶𝓶𝓪</output>
               <button class="copy-btn" type="button" aria-label="Copy Bold Script text">Copy</button>
             </article>
             <article class="result-row" data-style="italic" data-row="3">
               <span class="result-label">Italic Cursive</span>
-              <output class="result-preview" aria-live="polite">𝐶𝑢𝑟𝑠𝑖𝑣𝑒 𝑇𝑒𝑥𝑡 123</output>
+              <output class="result-preview">𝐸𝑚𝑚𝑎</output>
               <button class="copy-btn" type="button" aria-label="Copy Italic Cursive text">Copy</button>
             </article>
             <article class="result-row" data-style="bold-italic" data-row="4">
               <span class="result-label">Bold Italic</span>
-              <output class="result-preview" aria-live="polite">𝑪𝒖𝒓𝒔𝒊𝒗𝒆 𝑻𝒆𝒙𝒕 123</output>
+              <output class="result-preview">𝑬𝒎𝒎𝒂</output>
               <button class="copy-btn" type="button" aria-label="Copy Bold Italic text">Copy</button>
             </article>
             <article class="result-row" data-style="sans-italic" data-row="5">
               <span class="result-label">Sans Italic</span>
-              <output class="result-preview" aria-live="polite">𝘊𝘶𝘳𝘴𝘪𝘷𝘦 𝘛𝘦𝘹𝘵 123</output>
+              <output class="result-preview">𝘌𝘮𝘮𝘢</output>
               <button class="copy-btn" type="button" aria-label="Copy Sans Italic text">Copy</button>
             </article>
             <article class="result-row" data-style="sans-bold-italic" data-row="6">
               <span class="result-label">Sans Bold Italic</span>
-              <output class="result-preview" aria-live="polite">𝘾𝙪𝙧𝙨𝙞𝙫𝙚 𝙏𝙚𝙭𝙩 123</output>
+              <output class="result-preview">𝙀𝙢𝙢𝙖</output>
               <button class="copy-btn" type="button" aria-label="Copy Sans Bold Italic text">Copy</button>
             </article>
             <article class="result-row" data-style="fraktur" data-row="7">
               <span class="result-label">Fraktur Cursive</span>
-              <output class="result-preview" aria-live="polite">ℭ𝔲𝔯𝔰𝔦𝔳𝔢 𝔗𝔢𝔵𝔱 123</output>
+              <output class="result-preview">𝔈𝔪𝔪𝔞</output>
               <button class="copy-btn" type="button" aria-label="Copy Fraktur Cursive text">Copy</button>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="seo-copy content-section" aria-labelledby="about-title">
-        <div class="section-heading">
-          <h2 id="about-title">Make Cursive Text Ready to Use</h2>
-          <p>A focused tool for fast, readable Unicode styling.</p>
-        </div>
-        <div class="seo-copy-grid">
-          <article class="copy-block">
-            <h3>What this generator creates</h3>
-            <p>Our cursive text generator copy and paste tool changes ordinary letters into Unicode characters that resemble flowing handwriting. These results are text, not pictures, so you can select them, search them, and place them in most fields that accept normal characters. The conversion happens instantly inside your browser as you type. Seven chosen cursive fonts give you useful variety without forcing you to scan dozens of nearly identical options. No font file is installed, and your words are never sent to a server. That makes the page quick for names, longer captions, announcements, and everyday messages.</p>
-          </article>
-          <article class="copy-block">
-            <h3>Where the text works</h3>
-            <p>Use the generated text on Instagram for a profile name, caption, comment, or highlighted phrase. It can also add personality to TikTok descriptions, chat messages, community profiles, and a short bio. Many people use copy and paste cursive lettering in invitations, digital notes, game profiles, or creative project titles. Support depends on the destination and device, but modern phones and browsers recognize these Unicode symbols widely. If one style looks too ornate in a small field, choose a simpler italic option before copying. Readability should always come before decoration, especially for names that people need to remember or search.</p>
-          </article>
-          <article class="copy-block">
-            <h3>Choose a readable style</h3>
-            <p>Script Cursive has the most traditional handwritten appearance, while Bold Script makes short words stand out. Italic and Sans Italic are restrained choices for longer sentences. Bold Italic adds weight without many decorative details, and Fraktur offers a dramatic vintage look. Preview the full phrase rather than judging a style from one letter because spacing and capital shapes can change the result. The best cursive fonts stay legible at the size where you will publish them. Try two options, paste both into the destination, and compare them before updating an important public name or profile.</p>
-          </article>
-          <article class="copy-block">
-            <h3>Copy cleanly in one click</h3>
-            <p>For one result, press its Copy button and paste with your device’s usual command. Copy All places all seven versions on separate lines, making side-by-side testing easy. This free cursive text generator does not add watermarks, links, or hidden advertising to the copied output. Punctuation, emoji, and characters without a styled equivalent remain unchanged, which helps preserve the meaning of your message. When moving text between apps, check the final appearance before publishing because a few older systems may replace uncommon symbols. If that happens, return here and select a simpler row. The tool is free, requires no account, and works equally well from a phone or desktop browser.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section" aria-labelledby="faq-title">
-        <div class="section-heading">
-          <h2 id="faq-title">Frequently Asked Questions</h2>
-          <p>Quick answers about copying and using cursive Unicode.</p>
-        </div>
-        <div class="faq-list">
-          <article class="faq-item">
-            <h3>How do I copy and paste cursive text?</h3>
-            <p>Type your text in the box above, pick a style, and click the copy button. Then paste it wherever you want.</p>
-          </article>
-          <article class="faq-item">
-            <h3>Is this cursive text generator free?</h3>
-            <p>Yes, completely free. No sign-up required.</p>
-          </article>
-          <article class="faq-item">
-            <h3>Can I use cursive text on Instagram?</h3>
-            <p>Yes! Copy the cursive text and paste it directly into your Instagram bio, captions, or comments.</p>
-          </article>
-        </div>
-      </section>
+<section class="content-section" aria-labelledby="how-title"><div class="section-heading"><h2 id="how-title">How to Write Your Name in Cursive</h2></div><ol class="steps"><li>Type a first name, full name or nickname in the box above.</li><li>Compare all seven previews and choose a readable style.</li><li>Press Copy, paste into your destination, and check the final appearance.</li></ol><p class="reading-note">Use Copy All to compare every version in your own notes. An empty input shows Emma as an example. Spaces, hyphens, apostrophes, emoji and letters without a styled equivalent are preserved. Names with accents or non-Latin letters may therefore contain a mix of styled and original characters.</p></section><section class="content-section" aria-labelledby="styles-title"><div class="section-heading"><h2 id="styles-title">Cursive Name Styles</h2></div><p class="reading-note">These are the same seven selected styles as our Copy and Paste tool. Script and Bold Script offer the flowing look; italic and blackletter options give you alternatives. The <a href="/">main font generator</a> has a broader collection of decorative styles.</p><div class="seo-copy-grid"><article class="copy-block"><h3>Script Cursive</h3><p><span class="style-sample">ℰ𝓂𝓂𝒶</span>Soft loops for a personal bio or a card greeting. Start here for a traditional cursive appearance.</p></article><article class="copy-block"><h3>Bold Script</h3><p><span class="style-sample">𝓔𝓶𝓶𝓪</span>Heavier strokes give a short display name more emphasis. Check that loops remain clear at small sizes.</p></article><article class="copy-block"><h3>Italic Cursive</h3><p><span class="style-sample">𝐸𝑚𝑚𝑎</span>A lighter, slanted alphabet for understated names. These letters are italic rather than connected handwriting.</p></article><article class="copy-block"><h3>Bold Italic</h3><p><span class="style-sample">𝑬𝒎𝒎𝒂</span>A strong slant for headings, team nicknames or a prominent name on a digital invitation.</p></article><article class="copy-block"><h3>Sans Italic</h3><p><span class="style-sample">𝘌𝘮𝘮𝘢</span>Simple slanted shapes for a cleaner profile. This is a decorative alternative to looping script.</p></article><article class="copy-block"><h3>Sans Bold Italic</h3><p><span class="style-sample">𝙀𝙢𝙢𝙖</span>A heavier version for short, energetic display names. Preview it against your profile background.</p></article><article class="copy-block"><h3>Fraktur Cursive</h3><p><span class="style-sample">𝔈𝔪𝔪𝔞</span>Angular, blackletter-inspired shapes for a vintage or fantasy look. This is not connected cursive handwriting.</p></article></div></section><section class="content-section" aria-labelledby="uses-title"><div class="section-heading"><h2 id="uses-title">Where to Use Your Cursive Name</h2></div><div class="seo-copy-grid"><article class="copy-block"><h3>Instagram bios and profiles</h3><p>Use a short cursive name as a visual accent beside a plain-text bio. Decorative Unicode may be harder for screen readers or search tools to interpret, so keep important contact details and identifying information in ordinary text.</p></article><article class="copy-block"><h3>Display names and usernames</h3><p>Try a nickname in a game or community display-name field. Some services accept decorative characters in display names but restrict account handles to ordinary letters and numbers. If the field rejects your result, use the plain spelling instead.</p></article><article class="copy-block"><h3>Cards and invitations</h3><p>Paste a name into a digital greeting or invitation draft and check the result in the app you will use to share or print it. For precise spacing, connected lettering or a consistent printed design, use a real script font in your design editor.</p></article><article class="copy-block"><h3>Tattoo inspiration</h3><p>Compare the shapes of your initials and the balance of a full name before discussing lettering with an artist. Treat the previews as references. An artist can adjust joins, spacing and stroke weight for the placement and size you want.</p></article><article class="copy-block"><h3>Signature ideas</h3><p>Try your first name, surname or initials to explore a visual direction for a personal sign-off. This tool does not create a handwritten signature image or provide an electronic signing service. For pen-and-paper use, develop a natural version you can write yourself.</p></article></div></section><section class="content-section" aria-labelledby="practice-title"><div class="section-heading"><h2 id="practice-title">Cursive Names for Kids and Practice</h2></div><div class="copy-block"><p>These decorative Unicode letters are for copying, not a handwriting curriculum or a printable tracing worksheet. For practice, use ruled paper and a model alphabet that matches the learner’s school, or ask their teacher for a suitable name-tracing worksheet. Focus on letter formation and stroke order rather than copying the decorative shapes above.</p></div></section><section class="content-section" aria-labelledby="names-title"><div class="section-heading"><h2 id="names-title">Popular Names in Cursive</h2></div><p class="reading-note">A–Z inspiration in Script Cursive. Select an example to copy it manually, or type any name into the generator to compare all seven styles.</p><div class="names-grid"><div class="name-example"><span>Amelia</span><span class="style-sample">𝒜𝓂ℯ𝓁𝒾𝒶</span></div><div class="name-example"><span>Benjamin</span><span class="style-sample">ℬℯ𝓃𝒿𝒶𝓂𝒾𝓃</span></div><div class="name-example"><span>Charlotte</span><span class="style-sample">𝒞𝒽𝒶𝓇𝓁ℴ𝓉𝓉ℯ</span></div><div class="name-example"><span>Daniel</span><span class="style-sample">𝒟𝒶𝓃𝒾ℯ𝓁</span></div><div class="name-example"><span>Emma</span><span class="style-sample">ℰ𝓂𝓂𝒶</span></div><div class="name-example"><span>Finn</span><span class="style-sample">ℱ𝒾𝓃𝓃</span></div><div class="name-example"><span>Grace</span><span class="style-sample">𝒢𝓇𝒶𝒸ℯ</span></div><div class="name-example"><span>Henry</span><span class="style-sample">ℋℯ𝓃𝓇𝓎</span></div><div class="name-example"><span>Isabella</span><span class="style-sample">ℐ𝓈𝒶𝒷ℯ𝓁𝓁𝒶</span></div><div class="name-example"><span>James</span><span class="style-sample">𝒥𝒶𝓂ℯ𝓈</span></div><div class="name-example"><span>Kai</span><span class="style-sample">𝒦𝒶𝒾</span></div><div class="name-example"><span>Liam</span><span class="style-sample">ℒ𝒾𝒶𝓂</span></div><div class="name-example"><span>Mia</span><span class="style-sample">ℳ𝒾𝒶</span></div><div class="name-example"><span>Noah</span><span class="style-sample">𝒩ℴ𝒶𝒽</span></div><div class="name-example"><span>Olivia</span><span class="style-sample">𝒪𝓁𝒾𝓋𝒾𝒶</span></div><div class="name-example"><span>Penelope</span><span class="style-sample">𝒫ℯ𝓃ℯ𝓁ℴ𝓅ℯ</span></div><div class="name-example"><span>Quinn</span><span class="style-sample">𝒬𝓊𝒾𝓃𝓃</span></div><div class="name-example"><span>Riley</span><span class="style-sample">ℛ𝒾𝓁ℯ𝓎</span></div><div class="name-example"><span>Sophia</span><span class="style-sample">𝒮ℴ𝓅𝒽𝒾𝒶</span></div><div class="name-example"><span>Theo</span><span class="style-sample">𝒯𝒽ℯℴ</span></div><div class="name-example"><span>Uma</span><span class="style-sample">𝒰𝓂𝒶</span></div><div class="name-example"><span>Violet</span><span class="style-sample">𝒱𝒾ℴ𝓁ℯ𝓉</span></div><div class="name-example"><span>William</span><span class="style-sample">𝒲𝒾𝓁𝓁𝒾𝒶𝓂</span></div><div class="name-example"><span>Xavier</span><span class="style-sample">𝒳𝒶𝓋𝒾ℯ𝓇</span></div><div class="name-example"><span>Yara</span><span class="style-sample">𝒴𝒶𝓇𝒶</span></div><div class="name-example"><span>Zoe</span><span class="style-sample">𝒵ℴℯ</span></div></div></section><section class="content-section" aria-labelledby="faq-title"><div class="section-heading"><h2 id="faq-title">Frequently Asked Questions</h2></div><div class="faq-list"><article class="faq-item"><h3>How do I write my name in cursive?</h3><p>Enter your name in the box at the top, compare the seven previews, and press Copy beside the one you like. Paste the result into your destination and check its appearance. This creates styled Unicode text; it does not teach pen strokes.</p></article><article class="faq-item"><h3>Is there a free cursive name generator?</h3><p>Yes. This generator is free, needs no signup and lets you copy individual names or all seven versions. Conversion happens in your browser, with no font download required.</p></article><article class="faq-item"><h3>What is the prettiest cursive font?</h3><p>It depends on the name and where you use it. Script Cursive has softer loops, while Bold Script adds emphasis. Try both with your full name and choose the version that remains easy to read at the final size.</p></article><article class="faq-item"><h3>Can I use cursive text in my Instagram bio?</h3><p>You can try pasting a generated name into your bio or display name. Character support and field restrictions vary, so check the saved result. Keep a plain-text version available for readability and search; a username may have stricter rules.</p></article><article class="faq-item"><h3>What’s the best cursive name generator for kids?</h3><p>For handwriting practice, choose a dedicated worksheet tool with ruled lines, tracing guides and letter forms that match what the child is learning. This page is for decorative text and does not create tracing sheets or show stroke order.</p></article><article class="faq-item"><h3>Can I use cursive names for tattoos?</h3><p>Use the previews as lettering inspiration, then ask your tattoo artist to develop and check a custom design. Confirm every letter, accent and spelling. Copied Unicode text is not a finished tattoo stencil and may look different in another app.</p></article></div></section><section class="content-section" aria-labelledby="related-title"><div class="section-heading"><h2 id="related-title">More Text Tools</h2></div><p class="reading-note">Styling a phrase instead of a name? Use our <a href="/copy-and-paste/">Cursive Text Copy and Paste</a> tool. For more decorative options, explore the <a href="/">Cursive Font Generator</a>.</p></section>
     </div>
-    <p class="container" style="text-align:center">Looking for a name instead of a phrase? Try our <a href="/cursive-name-generator/">Cursive Name Generator</a>.</p>
   </main>
 
   <footer class="site-footer">
@@ -380,38 +346,81 @@
   </footer>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I copy and paste cursive text?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Type your text in the box above, pick a style, and click the copy button. Then paste it wherever you want." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this cursive text generator free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free. No sign-up required." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use cursive text on Instagram?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes! Copy the cursive text and paste it directly into your Instagram bio, captions, or comments." }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I write my name in cursive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter your name in the box at the top, compare the seven previews, and press Copy beside the one you like. Paste the result into your destination and check its appearance. This creates styled Unicode text; it does not teach pen strokes."
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free cursive name generator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This generator is free, needs no signup and lets you copy individual names or all seven versions. Conversion happens in your browser, with no font download required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the prettiest cursive font?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the name and where you use it. Script Cursive has softer loops, while Bold Script adds emphasis. Try both with your full name and choose the version that remains easy to read at the final size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use cursive text in my Instagram bio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can try pasting a generated name into your bio or display name. Character support and field restrictions vary, so check the saved result. Keep a plain-text version available for readability and search; a username may have stricter rules."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What’s the best cursive name generator for kids?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For handwriting practice, choose a dedicated worksheet tool with ruled lines, tracing guides and letter forms that match what the child is learning. This page is for decorative text and does not create tracing sheets or show stroke order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use cursive names for tattoos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the previews as lettering inspiration, then ask your tattoo artist to develop and check a custom design. Confirm every letter, accent and spelling. Copied Unicode text is not a finished tattoo stencil and may look different in another app."
+      }
+    }
+  ]
+}
+</script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cursivefontsgenerator.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Copy and Paste", "item": "https://cursivefontsgenerator.com/copy-and-paste/" }
-    ]
-  }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cursivefontsgenerator.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Name Generator",
+      "item": "https://cursivefontsgenerator.com/cursive-name-generator/"
+    }
+  ]
+}
+</script>
 
   <script>
     (() => {
@@ -419,7 +428,7 @@
 
       const SOURCE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       const DIGITS = '0123456789';
-      const SAMPLE_TEXT = 'Cursive Text 123';
+      const SAMPLE_TEXT = 'Emma';
 
       const codePointRange = (start, length) => Array.from({ length }, (_, index) => String.fromCodePoint(start + index)).join('');
       const continuousAlphabet = (upperStart, lowerStart) => codePointRange(upperStart, 26) + codePointRange(lowerStart, 26) + DIGITS;
@@ -464,7 +473,8 @@
       });
 
       function updateResults(rawText) {
-        const text = rawText || SAMPLE_TEXT;
+        const text = rawText.trim() ? rawText : SAMPLE_TEXT;
+        document.getElementById('name-help').textContent = (rawText.trim() ? '' : 'Previewing Emma until you type. ') + 'Styles convert A–Z and a–z; other characters stay unchanged. Display varies by app and device.';
         rows.forEach(row => {
           row.querySelector('.result-preview').textContent = transforms[row.dataset.style](text);
         });
@@ -479,6 +489,7 @@
             // Continue to the local-file and older-browser fallback.
           }
         }
+        const previousFocus = document.activeElement;
         const textarea = document.createElement('textarea');
         textarea.value = text;
         textarea.setAttribute('readonly', '');
@@ -491,10 +502,12 @@
         let copied = false;
         try { copied = document.execCommand('copy'); } catch (error) { copied = false; }
         textarea.remove();
+        previousFocus?.focus();
         return copied;
       }
 
       function showStatus(button, success, successText) {
+        document.getElementById('copy-status').textContent = success ? 'Copied to clipboard.' : 'Copy unavailable. Please select the result and copy it manually.';
         button.textContent = success ? successText : 'Copy failed';
         button.classList.toggle('copied', success);
         button.classList.toggle('copy-failed', !success);

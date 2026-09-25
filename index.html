@@ -410,6 +410,9 @@
       .header-nav a { font-size: .82rem; white-space: nowrap; }
     }
     /* End copy and paste page additions */
+    .header-inner { flex-wrap: wrap; padding-block: .7rem; }
+    .header-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    @media(max-width: 680px) { .header-inner { justify-content: center; } .header-nav { justify-content: center; } }
   </style>
 </head>
 <body>
@@ -421,6 +424,7 @@
       <nav class="header-nav" aria-label="Main navigation">
         <a href="/">Home</a>
         <a href="/copy-and-paste/">Copy & Paste</a>
+        <a href="/cursive-name-generator/">Name Generator</a>
       </nav>
       <p class="header-note">Beautiful Unicode text, ready to copy and paste.</p>
     </div>
@@ -681,6 +685,7 @@
         <article class="faq-item"><h3>Does the generator store what I type?</h3><p>No. Every conversion happens locally in your browser. The page does not send your text to an API or external service.</p></article>
       </div>
     </section>
+    <p class="container" style="text-align:center">Looking for a name instead of a phrase? Try our <a href="/cursive-name-generator/">Cursive Name Generator</a>.</p>
   </main>
 
   <footer class="site-footer">
