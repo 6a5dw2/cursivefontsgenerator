@@ -155,7 +155,7 @@
     .capability-line { margin: .7rem 0 .65rem; color: var(--muted); font-size: .79rem; }
     noscript p { margin: .4rem 0 .65rem; padding: .55rem .7rem; color: #5B556F; background: var(--accent-soft); border-radius: 8px; font-size: .8rem; }
     .results { display: grid; gap: .45rem; }
-    .result-row {
+    .result-row, .letter-row {
       min-width: 0;
       display: grid;
       grid-template-columns: 8.5rem minmax(0, 1fr) 5.2rem;
@@ -221,7 +221,7 @@
       .input-row { gap: .45rem; }
       .action-btn { min-width: 98px; padding-inline: .65rem; }
       .capability-line { font-size: .74rem; }
-      .result-row { grid-template-columns: 5.6rem minmax(0, 1fr) 4.65rem; gap: .4rem; padding-left: .55rem; }
+      .result-row, .letter-row {grid-template-columns: 5.6rem minmax(0, 1fr) 4.65rem; gap: .4rem; padding-left: .55rem; }
       .result-label { font-size: .7rem; line-height: 1.2; }
       .result-preview { font-size: 1rem; }
       .copy-btn { font-size: .74rem; padding-inline: .35rem; }
@@ -231,7 +231,7 @@
       .brand { font-size: .82rem; }
       .header-nav { gap: .5rem; }
       .header-nav a { font-size: .72rem; }
-      .result-row { grid-template-columns: 5rem minmax(0, 1fr) 4.4rem; }
+      .result-row, .letter-row { grid-template-columns: 5rem minmax(0, 1fr) 4.4rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -243,6 +243,59 @@
     .header-inner { flex-wrap: wrap; }
     .header-nav { flex-wrap: wrap; }
     @media(max-width: 760px) { .header-inner { justify-content: center; } .header-nav { justify-content: center; } }
+    .letter-card {
+      max-width: 960px;
+      margin-inline: auto;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    
+    .letter-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-bottom: .8rem;
+    }
+    
+    .letter-btn {
+      min-width: 40px;
+      min-height: 38px;
+      padding: .3rem;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 0;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: .86rem;
+      font-weight: 800;
+    }
+    
+    .letter-btn:hover {
+      color: #fff;
+      background: var(--accent-dark);
+    }
+    
+    .letter-btn.is-active {
+      color: #fff;
+      background: var(--accent);
+    }
+    
+    .letter-note {
+      margin: .8rem 0 0;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    
+    @media (max-width: 680px) {
+      .letter-btn {
+        min-width: 34px;
+        min-height: 34px;
+        font-size: .78rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -324,7 +377,68 @@
           </div>
         </div>
       </section>
-
+      <section class="content-section" aria-labelledby="letters-title">
+        <div class="section-heading">
+          <h2 id="letters-title">Cursive Letters Copy and Paste</h2>
+          <p>Pick any letter from A to Z and copy it in all seven cursive font styles.</p>
+        </div>
+      
+        <div class="letter-card">
+          <div class="letter-picker" id="letter-picker"
+               role="group" aria-label="Choose a letter"></div>
+      
+          <div class="results" aria-label="Cursive letter results">
+      
+            <article class="letter-row" data-letter-style="script">
+              <span class="result-label">Script Cursive</span>
+              <output class="result-preview">𝒜</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+            <article class="letter-row" data-letter-style="bold-script">
+              <span class="result-label">Bold Script</span>
+              <output class="result-preview">𝓐</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+            <article class="letter-row" data-letter-style="italic">
+              <span class="result-label">Italic Cursive</span>
+              <output class="result-preview">𝐴</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+            <article class="letter-row" data-letter-style="bold-italic">
+              <span class="result-label">Bold Italic</span>
+              <output class="result-preview">𝑨</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+            <article class="letter-row" data-letter-style="sans-italic">
+              <span class="result-label">Sans Italic</span>
+              <output class="result-preview">𝘈</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+            <article class="letter-row" data-letter-style="sans-bold-italic">
+              <span class="result-label">Sans Bold Italic</span>
+              <output class="result-preview">𝘼</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+            <article class="letter-row" data-letter-style="fraktur">
+              <span class="result-label">Fraktur Cursive</span>
+              <output class="result-preview">𝔄</output>
+              <button class="copy-btn" type="button">Copy</button>
+            </article>
+      
+          </div>
+      
+          <p class="letter-note">
+            Each script style uses Unicode characters, so you can paste the result
+            into social profiles, messages, usernames and other supported apps.
+          </p>
+        </div>
+      </section>
       <section class="seo-copy content-section" aria-labelledby="about-title">
         <div class="section-heading">
           <h2 id="about-title">Make Cursive Text Ready to Use</h2>
@@ -520,7 +634,64 @@
         const text = rows.map(row => row.querySelector('.result-preview').textContent).join('\n');
         showStatus(copyAllButton, await copyText(text), 'All Copied!');
       });
-
+      const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const letterPicker = document.getElementById('letter-picker');
+      const letterRows = Array.from(document.querySelectorAll('.letter-row'));
+      
+      if (letterPicker && letterRows.length) {
+        LETTERS.split('').forEach((letter, index) => {
+          const button = document.createElement('button');
+      
+          button.type = 'button';
+          button.className = 'letter-btn' + (index === 0 ? ' is-active' : '');
+          button.dataset.letter = letter;
+          button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+          button.textContent = letter;
+      
+          letterPicker.appendChild(button);
+        });
+      
+        const letterButtons =
+          Array.from(letterPicker.querySelectorAll('.letter-btn'));
+      
+        const renderLetter = letter => {
+          letterRows.forEach(row => {
+            row.querySelector('.result-preview').textContent =
+              transforms[row.dataset.letterStyle](letter);
+          });
+        };
+      
+        letterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            letterButtons.forEach(other => {
+              const active = other === button;
+      
+              other.classList.toggle('is-active', active);
+              other.setAttribute(
+                'aria-pressed',
+                active ? 'true' : 'false'
+              );
+            });
+      
+            renderLetter(button.dataset.letter);
+          });
+        });
+      
+        letterRows.forEach(row => {
+          row.querySelector('.copy-btn').addEventListener('click', async event => {
+            const text =
+              row.querySelector('.result-preview').textContent;
+      
+            showStatus(
+              event.currentTarget,
+              await copyText(text),
+              'Copied!'
+            );
+          });
+        });
+      
+        renderLetter('A');
+      }
       updateResults(input.value);
     })();
   </script>
