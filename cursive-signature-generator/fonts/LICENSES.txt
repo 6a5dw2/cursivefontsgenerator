@@ -1,0 +1,43 @@
+Fonts distributed from the Google Fonts repository: https://github.com/google/fonts
+Original font files are included unchanged. Each font is distributed under the SIL Open Font License 1.1.
+
+Allura
+Source: https://github.com/google/fonts/tree/main/ofl/allura
+File: Allura-Regular.ttf
+License: allura-OFL.txt
+
+Alex Brush
+Source: https://github.com/google/fonts/tree/main/ofl/alexbrush
+File: AlexBrush-Regular.ttf
+License: alexbrush-OFL.txt
+
+Great Vibes
+Source: https://github.com/google/fonts/tree/main/ofl/greatvibes
+File: GreatVibes-Regular.ttf
+License: greatvibes-OFL.txt
+
+Sacramento
+Source: https://github.com/google/fonts/tree/main/ofl/sacramento
+File: Sacramento-Regular.ttf
+License: sacramento-OFL.txt
+
+Parisienne
+Source: https://github.com/google/fonts/tree/main/ofl/parisienne
+File: Parisienne-Regular.ttf
+License: parisienne-OFL.txt
+
+Italianno
+Source: https://github.com/google/fonts/tree/main/ofl/italianno
+File: Italianno-Regular.ttf
+License: italianno-OFL.txt
+
+Pinyon Script
+Source: https://github.com/google/fonts/tree/main/ofl/pinyonscript
+File: PinyonScript-Regular.ttf
+License: pinyonscript-OFL.txt
+
+Tangerine
+Source: https://github.com/google/fonts/tree/main/ofl/tangerine
+File: Tangerine-Regular.ttf
+License: tangerine-OFL.txt
+
