@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Cursive Font Generator</title>
+<meta name="description" content="How Cursive Font Generator processes tool text locally and uses Microsoft Clarity analytics, cookies and related technologies.">
+<meta name="robots" content="index, follow"><meta name="theme-color" content="#4F46E5">
+<link rel="canonical" href="https://cursivefontsgenerator.com/privacy/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://cursivefontsgenerator.com/privacy/">
+<meta property="og:title" content="Privacy Policy | Cursive Font Generator">
+<meta property="og:description" content="Read about local text processing, Microsoft Clarity and cookies on Cursive Font Generator.">
+<style>
+    :root {
+      --accent: #4F46E5;
+      --accent-dark: #3730A3;
+      --accent-soft: #EEF2FF;
+      --ink: #20202A;
+      --muted: #686879;
+      --line: #E7E7EF;
+      --surface: #FFFFFF;
+      --page: #F8F8FB;
+      --success: #15803D;
+      --danger: #B42318;
+      --radius: 14px;
+      --shadow: 0 12px 32px rgba(35, 31, 78, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+
+    .container {
+      width: min(1040px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 100;
+      padding: .65rem 1rem;
+      color: #fff;
+      background: var(--accent-dark);
+      border-radius: 0 0 8px 8px;
+    }
+    .skip-link:focus { top: 0; }
+    :focus-visible { outline: 3px solid rgba(79, 70, 229, .35); outline-offset: 3px; }
+
+    .site-header {
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      flex: 0 0 auto;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .brand-mark { color: var(--accent); }
+    .header-nav { display: flex; align-items: center; gap: 1.2rem; }
+    .header-nav a {
+      padding: .35rem 0;
+      color: var(--ink);
+      border-bottom: 2px solid transparent;
+      font-size: .88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .header-nav a:hover,
+    .header-nav a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
+    .header-note { margin: 0; color: var(--muted); font-size: .86rem; }
+
+    main { padding-bottom: 3.5rem; }
+    .breadcrumb { padding-top: .8rem; color: var(--muted); font-size: .8rem; }
+    .breadcrumb ol { display: flex; gap: .45rem; margin: 0; padding: 0; list-style: none; }
+    .breadcrumb li + li::before { content: "/"; margin-right: .45rem; color: #AAA8B5; }
+    .breadcrumb a { text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
+
+    .tool-section { padding: 1rem 0 2.4rem; }
+    .tool-heading { text-align: center; }
+    h1 {
+      max-width: 820px;
+      margin: 0 auto .4rem;
+      font-size: clamp(2rem, 4.6vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+    .hero-copy { max-width: 690px; margin: 0 auto 1rem; color: var(--muted); font-size: 1rem; }
+    .tool-card {
+      max-width: 960px;
+      margin-inline: auto;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    .input-label { display: block; margin-bottom: .4rem; color: #454554; font-size: .82rem; font-weight: 800; }
+    .input-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .65rem; }
+    #text-input {
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      padding: .65rem .9rem;
+      color: var(--ink);
+      background: #fff;
+      border: 2px solid #D7D4EA;
+      border-radius: 11px;
+      outline: none;
+      font-size: 1.02rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    #text-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(79, 70, 229, .11); }
+    #text-input::placeholder { color: #92909E; }
+    .action-btn,
+    .copy-btn {
+      min-height: 44px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: background .18s, color .18s, transform .18s;
+    }
+    .action-btn { min-width: 112px; padding: .65rem 1rem; color: #fff; background: var(--accent); }
+    .action-btn:hover { background: var(--accent-dark); }
+    .action-btn:active,
+    .copy-btn:active { transform: scale(.98); }
+    .action-btn.copied,
+    .copy-btn.copied { color: #fff; background: var(--success); }
+    .action-btn.copy-failed,
+    .copy-btn.copy-failed { color: #fff; background: var(--danger); }
+    .capability-line { margin: .7rem 0 .65rem; color: var(--muted); font-size: .79rem; }
+    noscript p { margin: .4rem 0 .65rem; padding: .55rem .7rem; color: #5B556F; background: var(--accent-soft); border-radius: 8px; font-size: .8rem; }
+    .results { display: grid; gap: .45rem; }
+    .result-row, .letter-row {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 8.5rem minmax(0, 1fr) 5.2rem;
+      align-items: center;
+      gap: .65rem;
+      min-height: 54px;
+      padding: .35rem .4rem .35rem .75rem;
+      background: #FCFCFE;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+    }
+    .result-label { color: #4F4D5D; font-size: .78rem; font-weight: 800; }
+    .result-preview {
+      min-width: 0;
+      display: block;
+      overflow-x: auto;
+      padding: .25rem .2rem;
+      color: #302B57;
+      font-size: 1.16rem;
+      line-height: 1.4;
+      white-space: nowrap;
+      scrollbar-width: thin;
+    }
+    .copy-btn { min-width: 0; padding: .55rem .55rem; color: var(--accent-dark); background: var(--accent-soft); font-size: .8rem; }
+    .copy-btn:hover { color: #fff; background: var(--accent-dark); }
+
+    .content-section { padding-top: 3rem; }
+    .section-heading { max-width: 760px; margin: 0 auto 1.25rem; text-align: center; }
+    .section-heading h2 { margin: 0 0 .4rem; font-size: clamp(1.55rem, 3vw, 2.2rem); line-height: 1.15; letter-spacing: -.03em; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .seo-copy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+    .copy-block { padding: 1.25rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+    .copy-block h3 { margin: 0 0 .4rem; font-size: 1rem; }
+    .copy-block p { margin: 0; color: #5F5E6E; font-size: .91rem; }
+
+    .faq-list { max-width: 850px; margin: 0 auto; display: grid; gap: .7rem; }
+    .faq-item { padding: 1rem 1.15rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+    .faq-item h3 { margin: 0 0 .25rem; font-size: .98rem; }
+    .faq-item p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .site-footer { padding: 1.8rem 0; color: #747281; background: #fff; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-inner p { margin: 0; font-size: .84rem; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .footer-nav a { font-size: .84rem; font-weight: 700; text-decoration: none; }
+    .footer-nav a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .header-note { display: none; }
+      .seo-copy-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 1rem, 1040px); }
+      .header-inner { gap: .65rem; }
+      .brand { font-size: .9rem; }
+      .header-nav { flex-wrap: nowrap; gap: .65rem; }
+      .header-nav a { font-size: .78rem; white-space: nowrap; }
+      .tool-section { padding-top: .7rem; }
+      h1 { font-size: clamp(1.75rem, 8vw, 2.35rem); }
+      .hero-copy { font-size: .9rem; }
+      .tool-card { padding: .7rem; border-radius: 14px; }
+      .input-row { gap: .45rem; }
+      .action-btn { min-width: 98px; padding-inline: .65rem; }
+      .capability-line { font-size: .74rem; }
+      .result-row, .letter-row {grid-template-columns: 5.6rem minmax(0, 1fr) 4.65rem; gap: .4rem; padding-left: .55rem; }
+      .result-label { font-size: .7rem; line-height: 1.2; }
+      .result-preview { font-size: 1rem; }
+      .copy-btn { font-size: .74rem; padding-inline: .35rem; }
+      .content-section { padding-top: 2.5rem; }
+    }
+    @media (max-width: 390px) {
+      .brand { font-size: .82rem; }
+      .header-nav { gap: .5rem; }
+      .header-nav a { font-size: .72rem; }
+      .result-row, .letter-row { grid-template-columns: 5rem minmax(0, 1fr) 4.4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+    .header-inner { flex-wrap: wrap; padding-block: .7rem; }
+    .header-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+    @media(max-width: 680px) { .header-inner { justify-content: center; } .header-nav { justify-content: center; } }
+    .header-inner { flex-wrap: wrap; }
+    .header-nav { flex-wrap: wrap; }
+    @media(max-width: 760px) { .header-inner { justify-content: center; } .header-nav { justify-content: center; } }
+    .letter-card {
+      max-width: 960px;
+      margin-inline: auto;
+      padding: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    
+    .letter-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-bottom: .8rem;
+    }
+    
+    .letter-btn {
+      min-width: 40px;
+      min-height: 38px;
+      padding: .3rem;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 0;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: .86rem;
+      font-weight: 800;
+    }
+    
+    .letter-btn:hover {
+      color: #fff;
+      background: var(--accent-dark);
+    }
+    
+    .letter-btn.is-active {
+      color: #fff;
+      background: var(--accent);
+    }
+    
+    .letter-note {
+      margin: .8rem 0 0;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    
+    @media (max-width: 680px) {
+      .letter-btn {
+        min-width: 34px;
+        min-height: 34px;
+        font-size: .78rem;
+      }
+    }
+  
+.legal {max-width:760px;margin:0 auto 3rem;padding:2rem;background:white;border:1px solid var(--line);border-radius:14px;}
+.legal h1 {font-size:2rem;line-height:1.2;margin:0 0 .6rem;} .legal h2 {margin-top:1.8rem;font-size:1.25rem;}
+.legal p,.legal li {line-height:1.75;} .legal a {color:var(--accent-dark);} .legal-updated {color:var(--muted);font-size:.9rem;}
+@media(max-width:680px){.legal{padding:1.2rem;}}
+</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yqhsmpozg4");
+  </script>
+</head><body><a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Cursive Font Generator home"><span class="brand-mark">Cursive</span> Font Generator</a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/copy-and-paste/">Copy &amp; Paste</a>
+        <a href="/cursive-name-generator/">Name Generator</a>
+        <a href="/cursive-signature-generator/">Signature Generator</a>
+      </nav>
+      <p class="header-note">Real Unicode text, ready to paste anywhere.</p>
+    </div>
+  </header>
+<main id="main-content" class="container"><nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Privacy Policy</li></ol></nav>
+<article class="legal">
+<h1>Privacy Policy</h1>
+<p class="legal-updated">Last updated: October 6, 2026</p>
+<p>This policy describes how Cursive Font Generator uses information when you visit cursivefontsgenerator.com and use our tools.</p>
+<h2>Text you enter into our tools</h2>
+<p>Our tools process the text locally in your browser rather than sending it to our server. Text conversion and signature image generation happen on your device. When you copy a result or download a signature, it is saved to your clipboard or device at your request.</p>
+<h2>Microsoft Clarity analytics</h2>
+<p>We use Microsoft Clarity to understand how visitors use this website and to improve its usability. Clarity provides behavioral analytics, heatmaps and session replay based on information such as page views, clicks, scrolling and browser or device details.</p>
+<p>We do not intentionally use Clarity to collect the text you enter into our tools. Clarity applies masking to input fields. This does not mean the website collects no data: usage analytics are processed separately from the tools' local text conversion.</p>
+<p>For details about Microsoft's data practices, see the <a href="https://www.microsoft.com/en-us/privacy/privacystatement">Microsoft Privacy Statement</a> and <a href="https://learn.microsoft.com/en-us/clarity/faq">Clarity FAQ</a>.</p>
+<h2>Cookies and similar technologies</h2>
+<p>Microsoft Clarity may use cookies and similar technologies to provide analytics and session insights. These include cookies such as <code>_clck</code> and <code>_clsk</code>.</p>
+<ul><li><code>_clck</code> retains a Clarity user identifier and preferences for this site.</li><li><code>_clsk</code> associates page views with a Clarity session.</li></ul>
+<p>These examples are not an exhaustive cookie list. Microsoft may also use other cookies as described in its <a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies">Clarity cookie documentation</a>. You can manage or delete cookies through your browser settings.</p>
+<h2>Regional consent and your choices</h2>
+<p>Microsoft requires a valid consent signal for Clarity cookie use in the European Economic Area, the United Kingdom and Switzerland. Without analytics consent, Clarity may process limited cookieless data and some features may be unavailable. See Microsoft's <a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/consent-management">consent documentation</a> for details.</p>
+<p>This policy explains our data practices; it is not a consent request. Reading this page or using a tool does not itself provide a consent signal.</p>
+<h2>What our tools do not require</h2>
+<p>You do not need an account or an email address to use the tools. We do not provide a server-side history of the text you enter or the signatures you generate.</p>
+<h2>Changes to this policy</h2>
+<p>We may update this policy when our tools or data practices change. The date above indicates the latest update.</p>
+</article></main>
+<footer class="site-footer"><div class="container footer-inner"><p>Free cursive tools. Create, copy and make it yours.</p><nav class="footer-nav" aria-label="Footer navigation"><a href="/">Home</a><a href="/privacy/" aria-current="page">Privacy</a></nav></div></footer>
+</body></html>
