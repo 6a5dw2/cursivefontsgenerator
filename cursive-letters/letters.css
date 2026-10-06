@@ -1,0 +1,26 @@
+.letters-hero {padding:1rem 0 1.4rem;max-width:760px;}
+.eyebrow {color:var(--accent);font-size:.73rem;font-weight:800;letter-spacing:.12em;margin:0 0 .6rem;}
+.letters-hero h1 {font-size:clamp(2rem,5vw,3rem);line-height:1.12;letter-spacing:-.04em;margin:0 0 .7rem;}
+.letters-hero .hero-copy {font-size:1.05rem;margin:0;color:var(--muted);}
+.letter-tool {padding:1.4rem;background:white;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);}
+.tool-top {display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.tool-top h2 {font-size:1rem;margin:0;}.tool-top>span {font-size:.8rem;color:var(--muted);}
+.az-picker {display:grid;grid-template-columns:repeat(13,1fr);gap:.4rem;}
+.az-picker button {min-height:44px;background:var(--accent-soft);color:var(--accent-dark);border:1px solid transparent;border-radius:8px;cursor:pointer;font-weight:750;}
+.az-picker button:hover {border-color:var(--accent);}.az-picker button[aria-pressed=true] {background:var(--accent);color:white;}
+#selected-letter {font-size:1.2rem;margin:1.5rem 0 .8rem;}#selected-letter span {font-size:.85rem;color:var(--muted);font-weight:400;}
+.style-grid,.alphabet-grid {display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.letter-style {border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.letter-style h3 {font-size:.85rem;background:var(--page);border-bottom:1px solid var(--line);margin:0;padding:.6rem 1rem;}
+.case-pair {display:grid;grid-template-columns:1fr 1fr;}.case {padding:.8rem;display:flex;flex-direction:column;align-items:center;gap:.3rem;}.case+.case {border-left:1px solid var(--line);}
+.case-label {font-size:.72rem;color:var(--muted);font-weight:600;}.letter-preview {font-family:"Cambria Math","Segoe UI Symbol",serif;font-size:3.4rem;line-height:1.4;min-height:76px;}
+.copy-btn {min-height:40px;cursor:pointer;}.case .copy-btn {width:100%;max-width:130px;}
+#copy-status {font-size:.86rem;min-height:1.4em;margin:1rem 0 .4rem;color:var(--accent-dark);}
+.compatibility {font-size:.8rem;color:var(--muted);margin:0;}
+.letters-section {margin:2.6rem 0;}.letters-section h2 {font-size:1.5rem;letter-spacing:-.025em;margin:0 0 .6rem;}.letters-section>p {color:var(--muted);}
+.alphabet-card {padding:1.2rem;background:white;border:1px solid var(--line);border-radius:14px;min-width:0;}.alphabet-card h3 {margin:0 0 .8rem;font-size:1rem;}
+.alphabet-line+.alphabet-line {margin-top:1.2rem;border-top:1px solid var(--line);padding-top:1rem;}.alphabet-text {font-family:"Cambria Math","Segoe UI Symbol",serif;font-size:1.5rem;overflow-wrap:anywhere;line-height:1.8;margin:.3rem 0 .7rem;}
+.reference-table {width:100%;border-collapse:collapse;background:white;border:1px solid var(--line);}.reference-table caption {text-align:left;font-size:.85rem;color:var(--muted);margin-bottom:.7rem;}.reference-table th,.reference-table td {padding:.55rem 1rem;text-align:left;border-bottom:1px solid var(--line);}.reference-table thead {background:var(--accent-soft);font-size:.8rem;}.reference-table tbody th {font-size:.85rem;font-weight:500;}.reference-table td {font-family:"Cambria Math","Segoe UI Symbol",serif;font-size:1.7rem;}.reference-table tr:nth-child(even) {background:#fcfcff;}
+.notes {max-width:850px;}.notes p {line-height:1.75;}.notes h2:not(:first-child) {margin-top:2rem;}
+.related-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;}.related-grid a {padding:1rem;border:1px solid var(--line);border-radius:12px;background:white;text-decoration:none;}.related-grid a:hover {border-color:var(--accent);}.related-grid strong,.related-grid span {display:block;}.related-grid strong {color:var(--accent-dark);font-size:.9rem;}.related-grid span {font-size:.8rem;color:var(--muted);margin-top:.4rem;}
+@media(max-width:680px){.letter-tool{padding:1rem;}.az-picker{grid-template-columns:repeat(7,1fr);gap:.3rem;}.style-grid,.alphabet-grid{grid-template-columns:1fr;}#selected-letter span{display:block;margin-top:.2rem;}.letter-preview{font-size:3rem;min-height:68px;}.related-grid{grid-template-columns:1fr;}.reference-table th,.reference-table td{padding:.5rem .7rem;}.letters-hero{padding-top:.5rem;}}
