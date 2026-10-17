@@ -12,6 +12,14 @@
   <meta property="og:url" content="https://cursivefontsgenerator.com/copy-and-paste/">
   <meta property="og:title" content="Cursive Text Generator Copy and Paste - Free Cursive Fonts to Copy">
   <meta property="og:description" content="Type your text and instantly get seven cursive Unicode styles ready to copy and paste.">
+  <meta property="og:site_name" content="Cursive Font Generator">
+  <meta property="og:image" content="https://cursivefontsgenerator.com/og/copy-and-paste.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cursive text copy and paste tool">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://cursivefontsgenerator.com/og/copy-and-paste.png">
+  <link rel="icon" href="/favicon.png" type="image/png">
   <style>
     :root {
       --accent: #4F46E5;
@@ -598,11 +606,43 @@
         if (!transforms[row.dataset.style]) throw new Error(`Missing transform for ${row.dataset.style}`);
       });
 
-      function updateResults(rawText) {
-        const text = rawText || SAMPLE_TEXT;
-        rows.forEach(row => {
-          row.querySelector('.result-preview').textContent = transforms[row.dataset.style](text);
+      // Cache nodes and transforms once, outside the typing hot path.
+      const resultNodes = rows.map(row => ({
+        el: row.querySelector('.result-preview'),
+        transform: transforms[row.dataset.style]
+      }));
+
+      let renderedValue = null;
+      let pendingValue = '';
+      let frameId = 0;
+      let debounceId = 0;
+
+      function drawResults(value) {
+        renderedValue = value;
+        const text = value || SAMPLE_TEXT;
+        for (let i = 0; i < resultNodes.length; i += 1) {
+          resultNodes[i].el.textContent = resultNodes[i].transform(text);
+        }
+      }
+
+      function scheduleDraw() {
+        if (frameId) return;
+        frameId = window.requestAnimationFrame(() => {
+          frameId = 0;
+          drawResults(pendingValue);
         });
+      }
+
+      function updateResults(rawText) {
+        const value = rawText || '';
+        if (value === renderedValue) return;
+        pendingValue = value;
+        window.clearTimeout(debounceId);
+        if (value.length <= 8) {
+          scheduleDraw();
+        } else {
+          debounceId = window.setTimeout(scheduleDraw, 120);
+        }
       }
 
       async function copyText(text) {

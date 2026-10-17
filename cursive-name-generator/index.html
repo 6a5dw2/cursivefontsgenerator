@@ -12,6 +12,14 @@
   <meta property="og:url" content="https://cursivefontsgenerator.com/cursive-name-generator/">
   <meta property="og:title" content="Cursive Name Generator — Write Any Name in Cursive">
   <meta property="og:description" content="Type your name and see it in beautiful cursive styles instantly. Copy and paste your cursive name for Instagram, bios, cards, tattoos and more. Free, no signup.">
+  <meta property="og:site_name" content="Cursive Font Generator">
+  <meta property="og:image" content="https://cursivefontsgenerator.com/og/name.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cursive name generator preview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://cursivefontsgenerator.com/og/name.png">
+  <link rel="icon" href="/favicon.png" type="image/png">
   <style>
     :root {
       --accent: #4F46E5;
@@ -507,12 +515,56 @@
         if (!transforms[row.dataset.style]) throw new Error(`Missing transform for ${row.dataset.style}`);
       });
 
-      function updateResults(rawText) {
-        const text = rawText.trim() ? rawText : SAMPLE_TEXT;
-        document.getElementById('name-help').textContent = (rawText.trim() ? '' : 'Previewing Emma until you type. ') + 'Styles convert A–Z and a–z; other characters stay unchanged. Display varies by app and device.';
-        rows.forEach(row => {
-          row.querySelector('.result-preview').textContent = transforms[row.dataset.style](text);
+      // Cache nodes and transforms once, outside the typing hot path.
+      const resultNodes = rows.map(row => ({
+        el: row.querySelector('.result-preview'),
+        transform: transforms[row.dataset.style]
+      }));
+      const nameHelp = document.getElementById('name-help');
+      const HELP_SUFFIX = 'Styles convert A–Z and a–z; other characters stay unchanged. Display varies by app and device.';
+
+      let renderedValue = null;
+      let pendingValue = '';
+      let frameId = 0;
+      let debounceId = 0;
+      let helpShowsPlaceholder = null;
+
+      // The help line only changes when the field becomes empty or non-empty,
+      // so it is not rewritten on every keystroke.
+      function syncHelp(value) {
+        const isEmpty = !value.trim();
+        if (isEmpty === helpShowsPlaceholder) return;
+        helpShowsPlaceholder = isEmpty;
+        nameHelp.textContent = (isEmpty ? 'Previewing Emma until you type. ' : '') + HELP_SUFFIX;
+      }
+
+      function drawResults(value) {
+        renderedValue = value;
+        syncHelp(value);
+        const text = value.trim() ? value : SAMPLE_TEXT;
+        for (let i = 0; i < resultNodes.length; i += 1) {
+          resultNodes[i].el.textContent = resultNodes[i].transform(text);
+        }
+      }
+
+      function scheduleDraw() {
+        if (frameId) return;
+        frameId = window.requestAnimationFrame(() => {
+          frameId = 0;
+          drawResults(pendingValue);
         });
+      }
+
+      function updateResults(rawText) {
+        const value = rawText || '';
+        if (value === renderedValue) return;
+        pendingValue = value;
+        window.clearTimeout(debounceId);
+        if (value.length <= 8) {
+          scheduleDraw();
+        } else {
+          debounceId = window.setTimeout(scheduleDraw, 120);
+        }
       }
 
       async function copyText(text) {

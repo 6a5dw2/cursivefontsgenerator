@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cursive Font Generator - Free Online Cursive Text Copy & Paste</title>
-  <meta name="description" content="Generate beautiful cursive text instantly with Unicode. Free online cursive font generator with copy & paste support. Try 30+ styles — elegant, fancy, bold, aesthetic. No sign-up needed.">
+  <meta name="description" content="Turn text into 38 cursive, bold and fancy Unicode styles. Copy and paste into Instagram, TikTok or Discord — free, no signup, nothing leaves your browser.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#6d5ce7">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Cursive Font Generator - Free Online Cursive Text Copy & Paste">
   <meta property="og:description" content="Create cursive, bold, fancy, and aesthetic Unicode text in 38 styles. Copy and paste anywhere for free.">
+  <meta property="og:url" content="https://cursivefontsgenerator.com/">
+  <meta property="og:site_name" content="Cursive Font Generator">
+  <meta property="og:image" content="https://cursivefontsgenerator.com/og/home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cursive Font Generator — 38 Unicode text styles">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://cursivefontsgenerator.com/og/home.png">
   <link rel="canonical" href="https://cursivefontsgenerator.com/">
+  <link rel="icon" href="/favicon.png" type="image/png">
   <style>
     :root {
       --accent: #6554d9;
@@ -432,6 +441,51 @@
     gtag('js', new Date());
   
     gtag('config', 'G-YBH862SJ7E');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cursivefontsgenerator.com/#org",
+        "name": "Cursive Font Generator",
+        "url": "https://cursivefontsgenerator.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cursivefontsgenerator.com/og/home.png",
+          "width": 1200,
+          "height": 630
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cursivefontsgenerator.com/#website",
+        "url": "https://cursivefontsgenerator.com/",
+        "name": "Cursive Font Generator",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://cursivefontsgenerator.com/#org" }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://cursivefontsgenerator.com/#app",
+        "name": "Cursive Font Generator",
+        "url": "https://cursivefontsgenerator.com/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "38 Unicode cursive, bold, fancy and aesthetic text styles",
+          "One-click copy and paste",
+          "Runs entirely in the browser"
+        ],
+        "publisher": { "@id": "https://cursivefontsgenerator.com/#org" }
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -879,11 +933,49 @@
         if (!STYLE_TRANSFORMS[card.dataset.style]) throw new Error(`Missing transform for ${card.dataset.style}`);
       });
 
-      function updatePreviews(rawText) {
-        const text = rawText || SAMPLE_TEXT;
-        cards.forEach(card => {
-          card.querySelector('.preview').textContent = STYLE_TRANSFORMS[card.dataset.style](text);
+      // Cache nodes and transforms once. Typing must never query the DOM.
+      const previewNodes = cards.map(card => ({
+        card,
+        el: card.querySelector('.preview'),
+        transform: STYLE_TRANSFORMS[card.dataset.style]
+      }));
+
+      let renderedValue = null;
+      let pendingValue = '';
+      let frameId = 0;
+      let debounceId = 0;
+
+      function drawPreviews(value) {
+        renderedValue = value;
+        const text = value || SAMPLE_TEXT;
+        for (let i = 0; i < previewNodes.length; i += 1) {
+          const node = previewNodes[i];
+          // Filtered-out cards are redrawn when the filter changes.
+          if (node.card.hidden) continue;
+          node.el.textContent = node.transform(text);
+        }
+      }
+
+      function scheduleDraw() {
+        if (frameId) return;
+        frameId = window.requestAnimationFrame(() => {
+          frameId = 0;
+          drawPreviews(pendingValue);
         });
+      }
+
+      // Short input renders on the next frame (still feels instant); longer
+      // input is merged so a fast typist cannot queue 38 transforms per key.
+      function updatePreviews(rawText) {
+        const value = rawText || '';
+        if (value === renderedValue) return;
+        pendingValue = value;
+        window.clearTimeout(debounceId);
+        if (value.length <= 8) {
+          scheduleDraw();
+        } else {
+          debounceId = window.setTimeout(scheduleDraw, 120);
+        }
       }
 
       function applyFilter(filter) {
@@ -895,6 +987,7 @@
         });
         filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
         resultCount.textContent = `${visible} ${visible === 1 ? 'style' : 'styles'} shown`;
+        drawPreviews(input.value);
       }
 
       async function writeToClipboard(text) {
